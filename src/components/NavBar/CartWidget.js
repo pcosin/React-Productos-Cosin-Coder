@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CartWidjet() {
+function CartWidget() {
   return (
     <span className="material-icons">
 shopping_cart
@@ -8,4 +8,4 @@ shopping_cart
   )
 }
 
-export default CartWidjet
+export default CartWidget

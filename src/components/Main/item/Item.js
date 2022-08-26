@@ -12,6 +12,8 @@ function Item({item}) {
       <Card.Title>{item.titulo}</Card.Title>
       <Card.Text>$ {item.precio}
       </Card.Text>
+      <Card.Text>{item.descripcion}
+      </Card.Text>
       <Button variant="primary">Comprar</Button>
     </Card.Body>
   </Card>

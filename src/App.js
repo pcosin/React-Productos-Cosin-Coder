@@ -6,7 +6,7 @@ function App() {
   return (
     <>
    <NavBar />
-   <ItemListContainer name = "Saludos" />
+   <ItemListContainer name = "Bienvenidos a nuestra tienda de cerámicas" />
    </>
   );
 }

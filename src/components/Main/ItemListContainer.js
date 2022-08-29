@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
-import ItemCount from './itemCount';
 import {products} from "../../mock/products.js"
 import ItemList from './itemList/ItemList';
 
@@ -26,16 +24,12 @@ function ItemListContainer(props) {
 
   }, [])
 
-  const onAdd = () => {
-    console.log("hola")
-  }
-
+ 
 
   return (
     <Container>
     <h2 className='text-center p-4'>{props.name}</h2>
     <ItemList items ={items} />
-    <ItemCount stock = {5} initial = {1} onAdd = {onAdd} />
     </Container>
   )
 }

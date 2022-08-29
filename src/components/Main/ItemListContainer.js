@@ -5,6 +5,7 @@ import ItemList from './itemList/ItemList';
 
 function ItemListContainer(props) {
   const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=> {
     const getProducts  = new Promise((res, rej) =>{
@@ -19,7 +20,7 @@ function ItemListContainer(props) {
     }).catch((error) => {
       console.log("catch:", error )
     }).finally(()=>{
-      console.log("Terminó")
+      setLoading(false)
     })
 
   }, [])
@@ -27,11 +28,14 @@ function ItemListContainer(props) {
  
 
   return (
+    <>
+    {loading ? <h1 className='text-center p-4'>Cargando...</h1>
+    :
     <Container>
     <h2 className='text-center p-4'>{props.name}</h2>
     <ItemList items ={items} />
     </Container>
-  )
+}</>)
 }
 
 export default ItemListContainer

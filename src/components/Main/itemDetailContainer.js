@@ -26,7 +26,10 @@ function ItemDetailContainer(item) {
       }, [])
 
   return (
+    <>
+    <h2 className='text-center'>Detalle del producto</h2>
     <ItemDetail product = {product} />
+    </>
   )
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ItemCount from '../itemCount';
+import "./itemDetail.css";
 
 
 function ItemDetail({product}) {
@@ -13,15 +13,19 @@ function ItemDetail({product}) {
   return (
   <Container>
   <div className='row'>
-  <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={product.imagen} />
+  <Card className='card-single' style={{ width: '35rem' }}>
+  <Card.Img variant="top" src={product.imagen} />
       <Card.Body>
         <Card.Title>{product.titulo}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Precio: ${product.precio}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Text>
+          Colores: {product.colores}
+        </Card.Text>
+        <Card.Text>
+          Medidas: {product.medidas}
+        </Card.Text>
         <ItemCount stock = {5} initial = {1} onAdd = {onAdd} />
       </Card.Body>
     </Card>

@@ -1,0 +1,8 @@
+.card-single{
+    display: flex;
+    flex-direction: row;
+    margin-inline: auto;
+    margin-block: 3rem;
+    border: 2px solid red;
+}
+

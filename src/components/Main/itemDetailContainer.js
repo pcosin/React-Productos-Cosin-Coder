@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import {products} from "../../mock/products.js"
 import ItemDetail from './itemDetail/itemDetail'
+import {useParams} from "react-router-dom"
 
-function ItemDetailContainer(item) {
+function ItemDetailContainer(prod) {
     const [product, setProduct] = useState({})
+    const {detailId} = useParams()
 
-    const oneProduct = products.find((prod)=> prod.id === "1") 
+    const detailNumber = Number(detailId)
+    const algo = products.find((item => item.id == 3))
+    console.log(algo)
+
+    const oneProduct = products.find((prod)=> prod.id == detailNumber) 
+    console.log(detailNumber)
 
     useEffect(()=> {
         const getProducts  = new Promise((res, rej) =>{

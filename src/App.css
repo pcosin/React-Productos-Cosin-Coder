@@ -11,6 +11,10 @@
     font-size: 35px;
 }
 
+.navlink {
+    margin-inline: 1rem;
+    }
+
 /* item Counter */
 
 .number span {cursor:pointer; }

@@ -13,7 +13,7 @@ function Item({item}) {
       </Card.Text>
       <Card.Text>{item.descripcion}
       </Card.Text>
-      <Link to={`detail/${item.id}`}>
+      <Link to={`/detail/${item.id}`}>
       <Button variant="primary">Detalle</Button>
       </Link>
     </Card.Body>

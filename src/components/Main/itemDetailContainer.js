@@ -7,12 +7,7 @@ function ItemDetailContainer(prod) {
     const [product, setProduct] = useState({})
     const {detailId} = useParams()
 
-    const detailNumber = Number(detailId)
-    const algo = products.find((item => item.id == 3))
-    console.log(algo)
-
-    const oneProduct = products.find((prod)=> prod.id == detailNumber) 
-    console.log(detailNumber)
+    const oneProduct = products.find((prod)=> prod.id === detailId) 
 
     useEffect(()=> {
         const getProducts  = new Promise((res, rej) =>{

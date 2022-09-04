@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import {products} from "../../mock/products.js"
 import ItemList from './itemList/ItemList';
-import {useParams} from "react-router-dom"
+import {useParams} from "react-router-dom";
 
 function ItemListContainer(props) {
   const [items, setItems] = useState([])
@@ -33,7 +33,9 @@ function ItemListContainer(props) {
 
   return (
     <>
-    {loading ? <h1 className='text-center p-4'>Cargando...</h1>
+    {loading ? ( <div className="loader-container">
+      	  <div className="spinner"></div>
+        </div>)
     :
     <Container>
     <h2 className='text-center p-4'>{props.name}</h2>

@@ -18,8 +18,8 @@ export const NavBar = () => {
           <NavDropdown title="Categorias" id="basic-nav-dropdown">
               <NavDropdown.Item><NavLink className="navlink" to="categoria/autos">Autos</NavLink></NavDropdown.Item>
               <NavDropdown.Item>          <NavLink className="navlink" to="categoria/otros">Otros</NavLink>
-</NavDropdown.Item>
-            </NavDropdown>
+              </NavDropdown.Item>
+              </NavDropdown>
           
           </Nav>
           <NavLink className="navlink carritoNavBar" to="/cart"><CartWidget /></NavLink>

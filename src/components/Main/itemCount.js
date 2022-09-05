@@ -19,7 +19,7 @@ function ItemCount({initial, stock, onAdd}) {
 	  <span className='count-number'>{counter}</span>
 	  <span onClick={sumar} className="plus">+</span>
     </div>
-    <Button className='d-block m-2' variant= "primary" onClick={onAdd}>Agregar al carrito</Button>
+    <Button className='d-block m-2' variant= "primary" onClick={() => onAdd(counter)}>Agregar al carrito</Button>
     </div>
   )
 }

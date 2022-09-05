@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import ItemCount from '../itemCount';
+import { Link } from 'react-router-dom';
 import "./itemDetail.css";
+import { Button } from 'react-bootstrap';
 
 
 function ItemDetail({product}) {
-    const onAdd = () => {
-        console.log("hola")
+
+  const [cont, setCont] = useState(null)
+
+    const onAdd = (cantidad) => {
+        setCont(cantidad)
       }
     
   return (
@@ -26,7 +31,13 @@ function ItemDetail({product}) {
         <Card.Text>
           Medidas: {product.medidas}
         </Card.Text>
+        {cont ?
+        <Link to="/cart">
+         <Button variant="primary">Al carrito</Button> 
+        </Link>
+        :
         <ItemCount stock = {5} initial = {1} onAdd = {onAdd} />
+        }
       </Card.Body>
     </Card>
   </div>

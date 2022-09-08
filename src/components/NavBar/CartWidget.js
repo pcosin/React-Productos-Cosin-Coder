@@ -1,8 +1,8 @@
 import React from 'react'
-import { useCartContex } from '../../context/CartContext';
+// import { useCartContex } from '../../context/CartContext';
 
 function CartWidget() {
-  const {cantidadTotalItem} = useCartContex()
+  // const {cantidadTotalItem} = useCartContex()
   return (
     <>
     <span className="material-icons">

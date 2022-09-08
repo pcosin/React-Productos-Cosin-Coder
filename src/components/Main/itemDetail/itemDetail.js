@@ -5,15 +5,16 @@ import ItemCount from '../itemCount';
 import { Link } from 'react-router-dom';
 import "./itemDetail.css";
 import { Button } from 'react-bootstrap';
-import CartContextProvider from '../../../context/CartContext';
-
+import {useCartContex} from "../../../context/CartContext"
 
 function ItemDetail({product}) {
-  const {addToCart} = useContext(CartContextProvider)
   const [cont, setCont] = useState(null)
+  const {addToCart} = useCartContex()
 
     const onAdd = (cantidad) => {
         setCont(cantidad)
+        addToCart(product, cantidad)
+        console.log(cantidad)
       }
     
   return (

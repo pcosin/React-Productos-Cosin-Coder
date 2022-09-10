@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCartContex } from "../../../context/CartContext";
-import { ListGroup, ListGroupItem, Container, Card } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Container, Card } from 'react-bootstrap';
+
 
 
 function Cart() {
@@ -12,11 +12,7 @@ function Cart() {
   
   return (
     <div>
-    {cartList.length === 0 ? <div> <h2>"No hay nada en el carrito"</h2>
-    <Link to="/">
-    <button>Volver a comprar</button>
-    </Link></div>
-        :
+    {
 
         
 cartList.map(item =>

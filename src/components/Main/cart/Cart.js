@@ -33,6 +33,10 @@ cartList.map(item =>
     Cantida de items del producto: {item.cantidad}
 
 </Card.Text>
+<Card.Text>
+    Precio por unidad: {item.precio}
+
+</Card.Text>
 
 <Card.Text>
 
@@ -42,12 +46,16 @@ cartList.map(item =>
 
 </Card>
 
-<div> <button onClick={clearCart}>Limpiar Carrito</button> </div>
-
+<div> 
+  <button onClick={clearCart}>Limpiar Carrito</button> </div>
 <div>
 
   <p>Precio Total: {totalPrice()} </p>
 </div>
+
+<button>
+     Terminar Compra
+     </button>
 
 
 </Container>)}

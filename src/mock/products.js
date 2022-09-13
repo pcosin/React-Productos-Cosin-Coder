@@ -1,6 +1,6 @@
 export const products = [
     {id: "1", 
-    imagen:"https://scontent.faep8-1.fna.fbcdn.net/v/t39.30808-6/278236614_5448519055167517_6010823867206971036_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_ohc=F8O5mdufpa8AX8pUebx&_nc_ht=scontent.faep8-1.fna&oh=00_AT_sI7n374naIVT-CS3UHVlYCPd4iEj0QrSyTx5fK4uVtA&oe=630DB4D8",
+    imagen:"https://scontent.faep8-2.fna.fbcdn.net/v/t39.30808-6/290529539_5675686045784149_667316992852230653_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a26aad&_nc_ohc=QllYBuvcBHAAX8FnuU1&tn=laTikPXB2lsdP7Mh&_nc_ht=scontent.faep8-2.fna&oh=00_AT8pWlYnd8Pcnr8OZUW1z18qT6BWB5fLBaTYUt4aGhMbdw&oe=632485F3",
     titulo:"Maceta Chevy", 
     precio:"2800",
     descripcion: "Macetas artesanales de cerámica, varios colores y modelos. Para dar vida y embellecer los interiores de tu casa. Ponemos mucho amor y dedicación en cada una de nuestras piezas.",

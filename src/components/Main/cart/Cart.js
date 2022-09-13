@@ -1,18 +1,24 @@
 import React from 'react'
 import { useCartContex } from "../../../context/CartContext";
 import { Container, Card } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
+
 
 
 
 function Cart() {
 
-  const { cartList, clearCart, isIncart, removeItem } = useCartContex()
+  const { cartList, clearCart, removeItem, totalPrice } = useCartContex()
 
   console.log(cartList)
   
   return (
     <div>
-    {
+    {    cartList.length === 0 ? <div> <h2>No hay nada en el carrito</h2>
+        <Link to="/">
+        <button>Volver a comprar</button>
+        </Link></div>
+            :
 
         
 cartList.map(item =>
@@ -27,6 +33,7 @@ cartList.map(item =>
     Cantida de items del producto: {item.cantidad}
 
 </Card.Text>
+
 <Card.Text>
 
 </Card.Text>
@@ -38,6 +45,8 @@ cartList.map(item =>
 <div> <button onClick={clearCart}>Limpiar Carrito</button> </div>
 
 <div>
+
+  <p>Precio Total: {totalPrice()} </p>
 </div>
 
 

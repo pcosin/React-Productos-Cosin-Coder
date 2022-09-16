@@ -10,7 +10,7 @@ function Item({item}) {
     <Card.Img className='img-item' variant="top" src={item.imagen} />
     <Card.Body>
       <Card.Title>{item.titulo}</Card.Title>
-      <Card.Text>$ {item.precio}
+      <Card.Text>El precio es de $ {item.precio}
       </Card.Text>
       <Card.Text>{item.descripcion}
       </Card.Text>

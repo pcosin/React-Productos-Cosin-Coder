@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
-import {products} from "../../mock/products.js"
 import ItemList from './itemList/ItemList';
 import {useParams} from "react-router-dom";
+import {collection, getDocs} from "firebase/firestore"
+import { db } from '../../firebaseConfig.js';
 
 function ItemListContainer(props) {
   const [items, setItems] = useState([])
@@ -10,26 +11,26 @@ function ItemListContainer(props) {
 
   const {categoriaId} = useParams()
 
-  useEffect(()=> {
-      const getProducts  = new Promise((res, rej) =>{
-      const prodsFiltrados = products.filter((prod) => prod.categoria === categoriaId)
-      setTimeout(()=> {
-        res(categoriaId ? prodsFiltrados: products)
-      }, 2000
-      )
-    });
-    getProducts
-    .then((data) =>{
-      setItems(data) 
-    }).catch((error) => {
-      console.log("catch:", error )
-    }).finally(()=>{
-      setLoading(false)
-    })
-   
-  }, [categoriaId])
+  useEffect(() => {
+    const itemCollection = collection(db, 'items');
+    getDocs(itemCollection)
+        .then((response) => {
+            const products = response.docs.map((prod) => {  
+                return {
+                    id: prod.id,
+                    ...prod.data(),
+                };
+            });
+            setItems(products);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+}, [categoriaId]);
 
- 
 
   return (
     <>

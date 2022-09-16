@@ -14,7 +14,6 @@ function ItemDetail({product}) {
     const onAdd = (cantidad) => {
         setCont(cantidad)
         addToCart(product, cantidad)
-        console.log(cantidad)
       }
     
   return (

@@ -33,9 +33,14 @@ function ItemDetail({product}) {
           Medidas: {product.medidas}
         </Card.Text>
         {cont ?
-        <Link to="/cart">
+        <Container>
+          <Link to="/cart">
          <Button variant="primary">Al carrito</Button> 
         </Link>
+        <Link to="/">
+        <Button variant="primary">Continuar comprando</Button> 
+       </Link>
+        </Container>
         :
         <ItemCount stock = {5} initial = {1} onAdd = {onAdd} />
         }

@@ -26,23 +26,6 @@ function ItemDetailContainer(prod) {
             })
   }, [detailId]);
 
-    // useEffect(()=> {
-    //     const getProducts  = new Promise((res, rej) =>{
-    //       setTimeout(()=> {
-    //         res(oneProduct)
-    //       }, 2000
-    //       )
-    //     });
-    //     getProducts
-    //     .then((data) =>{
-    //       setProduct(data) 
-    //     }).catch((error) => {
-    //       console.log("catch:", error )
-    //     }).finally(()=>{
-    //       setLoading(false)
-    //     })
-    
-    //   }, [])
 
   return (
     <> {loading ? ( <div className="loader-container">

@@ -17,7 +17,7 @@ export const NavBar = () => {
           <Nav className="mx-auto">
           <NavDropdown title="Categorias" id="basic-nav-dropdown">
               <NavDropdown.Item><NavLink className="navlink" to="categoria/autos">Autos</NavLink></NavDropdown.Item>
-              <NavDropdown.Item>          <NavLink className="navlink" to="categoria/otros">Otros</NavLink>
+              <NavDropdown.Item><NavLink className="navlink" to="categoria/otros">Otros</NavLink>
               </NavDropdown.Item>
               </NavDropdown>
           

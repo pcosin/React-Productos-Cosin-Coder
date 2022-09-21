@@ -33,7 +33,7 @@ function ItemDetail({product}) {
           Medidas: {product.medidas}
         </Card.Text>
         {cont ?
-        <Container>
+        <Container className="d-flex justify-content-between">
           <Link to="/cart">
          <Button variant="primary">Al carrito</Button> 
         </Link>

@@ -11,21 +11,30 @@ import "./cart.css"
 function Cart() {
 
   const [idCompra, setIdCompra] = useState('');
+  const [totalCompra, setTotalCompra] = useState('');
+
 
   const { cartList, clearCart, removeItem, totalPrice } = useCartContex()
 
   const total = totalPrice();
 
-  const handleId = (id) => {
+  const handleTotalCompra = (monto) => {
+    setTotalCompra(monto)
+  };
+
+  const handleId = (id) => { 
       setIdCompra(id);
   };
 
   if (idCompra) {
       return (
       <Container>
+        <div className='text-center p-3'>
+
         <h2>Gracias por comprar tu id es: {idCompra}</h2>
 
-        <h2>Su total es de: {total}</h2>
+        <h2>Su total es de: {totalCompra}</h2>
+        </div>
 
         
       </Container>      
@@ -77,10 +86,11 @@ cartList.map(item =>
      Terminar Compra
 </Button>
 </div>
-<FormFinal  cart={cartList}
+<FormFinal  cartList={cartList}
             clearCart={clearCart}
             handleId={handleId}
             total={total}
+            handleTotalCompra={handleTotalCompra}
 />
       
     </Container>

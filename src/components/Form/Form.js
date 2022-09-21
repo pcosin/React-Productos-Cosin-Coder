@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { db } from "../../firebaseConfig";
 
-const FormFinal = ({ cart, clearCart, handleId, total  }) => {
+const FormFinal = ({ cartList, clearCart, handleId, total, handleTotalCompra  }) => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [mail, setMail] = useState("");
@@ -25,7 +25,7 @@ const FormFinal = ({ cart, clearCart, handleId, total  }) => {
 
     const order = {
       buyer: { nombre, apellido, mail, phone },
-      itmes: cart,
+      itmes: cartList,
       total: total,
       date: serverTimestamp(),
     };
@@ -35,6 +35,8 @@ const FormFinal = ({ cart, clearCart, handleId, total  }) => {
     addDoc(ordersCollection, order).then((res) => {
         handleId(res.id);
         clearCart();
+        handleTotalCompra(order.total)
+
     });
   }
 

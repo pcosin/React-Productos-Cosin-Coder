@@ -1,14 +1,39 @@
 import React from 'react'
+import { useState, useContext } from 'react';
 import { useCartContex } from "../../../context/CartContext";
 import { Container, Card, Button } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
+import FormFinal from "../../Form/Form.js"
 import "./cart.css"
 
 
 
 function Cart() {
 
+  const [idCompra, setIdCompra] = useState('');
+
   const { cartList, clearCart, removeItem, totalPrice } = useCartContex()
+
+  const total = totalPrice();
+
+  const handleId = (id) => {
+      setIdCompra(id);
+  };
+
+  if (idCompra) {
+      return (
+      <Container>
+        <h2>Gracias por comprar tu id es: {idCompra}</h2>
+
+        <h2>Su total es de: {total}</h2>
+
+        
+      </Container>      
+      
+      );
+  }
+
+  
  
   return (
     <Container>
@@ -45,14 +70,18 @@ cartList.map(item =>
   <Button onClick={clearCart}>Limpiar Carrito</Button>
 </div>
 <div>
-  <p>Precio Total: {totalPrice()} </p>
+  <p>Precio Total: {total} </p>
 </div>
 
 <Button>
      Terminar Compra
 </Button>
 </div>
-
+<FormFinal  cart={cartList}
+            clearCart={clearCart}
+            handleId={handleId}
+            total={total}
+/>
       
     </Container>
   )}

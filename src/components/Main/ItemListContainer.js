@@ -1,70 +1,74 @@
-import React, { useState, useEffect } from 'react'
-import Container from 'react-bootstrap/Container';
-import ItemList from './itemList/ItemList';
-import {useParams} from "react-router-dom";
-import {collection, getDocs,query, where} from "firebase/firestore"
-import { db } from '../../firebaseConfig.js';
+import React, { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import ItemList from "./itemList/ItemList";
+import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../firebaseConfig.js";
 
 function ItemListContainer(props) {
-  const [items, setItems] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const {categoriaId} = useParams()
+  const { categoriaId } = useParams();
 
   useEffect(() => {
-    if(categoriaId) {
-      const itemCollection = collection(db, 'items');
-      const queryFilter = query( itemCollection, where('categoria', '==', categoriaId)  )
-    getDocs(queryFilter)
+    if (categoriaId) {
+      const itemCollection = collection(db, "items");
+      const queryFilter = query(
+        itemCollection,
+        where("categoria", "==", categoriaId)
+      );
+      getDocs(queryFilter)
         .then((response) => {
-            const products = response.docs.map((prod) => {  
-                return {
-                    id: prod.id,
-                    ...prod.data(),
-                };
-            });
-            setItems(products);
+          const products = response.docs.map((prod) => {
+            return {
+              id: prod.id,
+              ...prod.data(),
+            };
+          });
+          setItems(products);
         })
         .catch((error) => {
-            console.log(error);
+          console.log(error);
         })
         .finally(() => {
-            setLoading(false);
+          setLoading(false);
+        });
+    } else {
+      const itemCollection = collection(db, "items");
+      getDocs(itemCollection)
+        .then((response) => {
+          const products = response.docs.map((prod) => {
+            return {
+              id: prod.id,
+              ...prod.data(),
+            };
+          });
+          setItems(products);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
-    else {
-      const itemCollection = collection(db, 'items');
-      getDocs(itemCollection)
-          .then((response) => {
-              const products = response.docs.map((prod) => {  
-                  return {
-                      id: prod.id,
-                      ...prod.data(),
-                  };
-              });
-              setItems(products);
-          })
-          .catch((error) => {
-              console.log(error);
-          })
-          .finally(() => {
-              setLoading(false);
-          });
-    }
-}, [categoriaId]);
-
+  }, [categoriaId]);
 
   return (
     <>
-    {loading ? ( <div className="loader-container">
-      	  <div className="spinner"></div>
-        </div>)
-    :
-    <Container>
-    <h2 className='text-center p-4'>{props.name}</h2>
-    <ItemList items ={items} />
-    </Container>
-}</>)
+      {loading ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <Container>
+          <h2 className="text-center p-4">{props.name}</h2>
+          <ItemList items={items} />
+        </Container>
+      )}
+    </>
+  );
 }
 
-export default ItemListContainer
+export default ItemListContainer;

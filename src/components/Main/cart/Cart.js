@@ -10,6 +10,8 @@ function Cart() {
   const [idCompra, setIdCompra] = useState("");
   const [totalCompra, setTotalCompra] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [cont, setCont] = useState(null);
+
 
   const { cartList, clearCart, removeItem, totalPrice } = useCartContex();
 
@@ -27,6 +29,10 @@ function Cart() {
     setShowForm(!showForm)
   };
 
+  const showTotal = (cantidad) => {
+    setCont(cantidad);
+  };
+
   if (idCompra) {
     return (
       <Container>
@@ -38,8 +44,6 @@ function Cart() {
       </Container>
     );
   }
-
- 
 
   return (
     <Container>
@@ -68,14 +72,18 @@ function Cart() {
               </Card.Body>
             </Card>
           </Container>
+          
         ))
       )}
+
+      {cartList.length > 0 && (
+
       <div className="text-center">
         <div>
           <Button onClick={clearCart}>Limpiar Carrito</Button>
         </div>
         <div>
-          <p>Precio Total: {total} </p>
+          <p>Precio Total: ${total} </p>
         </div>
       {!showForm ? <Button onClick= {() => goToForm()}>Terminar Compra</Button> :
 
@@ -85,9 +93,15 @@ function Cart() {
         handleId={handleId}
         total={total}
         handleTotalCompra={handleTotalCompra}
-        />
-      }    
-      </div>
+        />}
+
+      </div>  
+      ) 
+
+      
+      }
+
+
 
     </Container>
 );

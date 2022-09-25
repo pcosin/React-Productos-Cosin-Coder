@@ -128,3 +128,14 @@
         transform: rotate(360deg);
     }
 }
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > div {
+padding-block: .5rem;
+
+}

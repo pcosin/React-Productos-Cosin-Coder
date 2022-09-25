@@ -2,9 +2,7 @@ import React from "react";
 import {
   addDoc,
   collection,
-  doc,
   serverTimestamp,
-  updateDoc,
 } from "firebase/firestore";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -17,11 +15,13 @@ const FormFinal = ({ cartList, clearCart, handleId, total, handleTotalCompra  })
   const [apellido, setApellido] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
 
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    validateName()
 
     const order = {
       buyer: { nombre, apellido, mail, phone },
@@ -42,7 +42,14 @@ const FormFinal = ({ cartList, clearCart, handleId, total, handleTotalCompra  })
 
   const handleChangeNombre = (event) => {
     setNombre(event.target.value);
+   
   };
+
+  const validateName = () => {
+    if (!nombre ) {
+      console.log("error")
+    }
+  }
 
   const handleChangeApellido = (event) => {
     setApellido(event.target.value);
@@ -60,45 +67,64 @@ const FormFinal = ({ cartList, clearCart, handleId, total, handleTotalCompra  })
 
   return (
     <div style={{ marginTop: "20px" }}>
-      <Form action="" onSubmit={handleSubmit}>
-      <input
-          type="text"
-          placeholder="Nombre..."
-          name="nombre"
-          value={nombre}
-          onChange={handleChangeNombre}
-        />
+      <Form action="" onSubmit={handleSubmit} className='form'>
+        <div>
         <input
           type="text"
-          placeholder="Apellido..."
+          placeholder="Nombre"
+          name="nombre"
+          value={nombre}
+          onChange={handleChangeNombre} required
+        />
+        </div>
+
+        <div>
+        <input
+          type="text"
+          placeholder="Apellido"
           name="apellido"
           value={apellido}
-          onChange={handleChangeApellido}
+          onChange={handleChangeApellido} required
         />
-          <input
+
+        </div>
+       
+        <div>
+        <input
           type="number"
           placeholder="Telefono"
           name="telefono"
           value={phone}
-          onChange={handleChangePhone}
+          onChange={handleChangePhone} required
         />
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" value={mail} onChange={handleChangeMail}
- />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+        </div>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
+      <div>
+      <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={mail}
+          onChange={handleChangeMail} required
+        />
+      </div>
+
+      {/* <div>
+      <input
+          type="password"
+          placeholder="Password"
+          name="email"
+          value={}
+          onChange={} required
+        />
+      </div> */}
+
      
+      <div>
       <Button variant="primary" type="submit">
         Enviar
       </Button>
+      </div>
     </Form>
 
       

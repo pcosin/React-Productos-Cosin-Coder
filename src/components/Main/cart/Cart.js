@@ -1,8 +1,8 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useCartContex } from "../../../context/CartContext";
 import { Container, Card, Button } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import FormFinal from "../../Form/Form.js";
 import "./cart.css";
 
@@ -10,8 +10,6 @@ function Cart() {
   const [idCompra, setIdCompra] = useState("");
   const [totalCompra, setTotalCompra] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const [cont, setCont] = useState(null);
-
 
   const { cartList, clearCart, removeItem, totalPrice } = useCartContex();
 
@@ -26,11 +24,7 @@ function Cart() {
   };
 
   const goToForm = () => {
-    setShowForm(!showForm)
-  };
-
-  const showTotal = (cantidad) => {
-    setCont(cantidad);
+    setShowForm(!showForm);
   };
 
   if (idCompra) {
@@ -72,39 +66,32 @@ function Cart() {
               </Card.Body>
             </Card>
           </Container>
-          
         ))
       )}
 
       {cartList.length > 0 && (
-
-      <div className="text-center">
-        <div>
-          <Button onClick={clearCart}>Limpiar Carrito</Button>
+        <div className="text-center">
+          <div>
+            <Button onClick={clearCart}>Limpiar Carrito</Button>
+          </div>
+          <div>
+            <p>Precio Total: ${total} </p>
+          </div>
+          {!showForm ? (
+            <Button onClick={() => goToForm()}>Terminar Compra</Button>
+          ) : (
+            <FormFinal
+              cartList={cartList}
+              clearCart={clearCart}
+              handleId={handleId}
+              total={total}
+              handleTotalCompra={handleTotalCompra}
+            />
+          )}
         </div>
-        <div>
-          <p>Precio Total: ${total} </p>
-        </div>
-      {!showForm ? <Button onClick= {() => goToForm()}>Terminar Compra</Button> :
-
-      <FormFinal
-        cartList={cartList}
-        clearCart={clearCart}
-        handleId={handleId}
-        total={total}
-        handleTotalCompra={handleTotalCompra}
-        />}
-
-      </div>  
-      ) 
-
-      
-      }
-
-
-
+      )}
     </Container>
-);
+  );
 }
 
 export default Cart;

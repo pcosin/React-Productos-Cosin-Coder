@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ItemCount from "../itemCount";

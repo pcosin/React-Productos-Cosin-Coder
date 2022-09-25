@@ -1,6 +1,8 @@
 # Ecomerce creado con React 
 
-El proyecto es una simulación de en un ecomerce para propósitos educativos, que simula la carga de productos desde un backend (provisto por Firebase), añade los productos a un carrito y finaliza la compra a través de un formulario, dándole finalmente los datos de la compra al usuario.
+El proyecto es una representación de un ecomerce para propósitos educativos, que simula la carga de productos desde un backend (provisto por Firebase), añade los productos a un carrito y finaliza la compra a través de un formulario, dándole finalmente los datos de la compra al usuario.
+
+![](public/proyecto-muestra.png)
 
 ## Librerías utilizadas
 
